@@ -38,6 +38,15 @@ Mutator=Mut1.Mut2
 Mutator=Mut1.Mut3
 [/code]
 
+[b]Usage with MapVoteV2[/b]
+
+[code]
+GameConfig=(GameClass="KFMod.KFGameType",Prefix="KF",Acronym="KF",GameName="Easy",Mutators="MutLoader.MutLoader",Options="Difficulty=1")
+GameConfig=(GameClass="KFMod.KFGameType",Prefix="KF",Acronym="KF",GameName="Normal",Mutators="MutLoader.MutLoader",Options="Difficulty=2")
+[/code]
+
+No need to put any other mutators in the list of MapVoteV2. What's important is the GameType + Difficulty.
+
 [h1][b][u]File Names[/u][/b][/h1]
 
 - \System\MutLoader.u
@@ -60,4 +69,4 @@ You can find it under 'Not-Whitelisted' folder named 'KF-Mutloader-v2.0'
 
 - MEGA Link: https://mega DOT nz/folder/YDoEmKiC#s6FGAtgh40-TvB4bHsLaMQ
 
-- Github: https://github.com/Vel-San/KF-ServerTools/releases/tag/v1.2r
+- Github: https://github.com/Vel-San/KF-Mutloader/releases/tag/v2.0
