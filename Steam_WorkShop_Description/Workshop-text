@@ -1,0 +1,63 @@
+Optimized version of 'MutLoader' originally made by Flame &amp; Essence, slightly modified by Vel-San;
+
+- If your server is crashing because your 'Server Launch Command' has a lot of mutators, or MapVoteV2 is crashing as well, then this mutator is for you
+
+[b]Changes from the original version[/b]
+
+- Better support with MapVoteV2
+- ServerName change with every config
+
+[h1][b][u]Notes[/u][/b][/h1]
+
+- Credits to Flame & Essence for their work too.
+
+[h1][b][u]Number Of Files[/u][/b][/h1]
+
+- 3
+
+[h1][b][u]Sample Config[/u][/b][/h1]
+
+[code]
+[MutLoaderV2.MutLoader]
+bDebug=True
+
+[Settings1 MutLoaderObject]
+GameTypeName=KFGameType # Can be any gametype you want
+GameDifficulty=4.0 # Important if you want to make 2 configs of the same GameType, with different difficulties
+ServerName=This is a test server - Diff 4.0 # ServerName will change to this, set to empty if you want to disable
+Mutator=Mut1.Mut1
+Mutator=Mut1.Mut2
+Mutator=Mut1.Mut3
+
+[Settings2 MutLoaderObject]
+GameTypeName=KFGameType
+GameDifficulty=7.0
+ServerName=This is a test server - Diff 7.0
+Mutator=Mut1.Mut1
+Mutator=Mut1.Mut2
+Mutator=Mut1.Mut3
+[/code]
+
+[h1][b][u]File Names[/u][/b][/h1]
+
+- \System\MutLoader.u
+- \System\MutLoader.ucl
+- \System\MutLoaderV2.ini
+
+[h1][b][u]Usage[/u][/b][/h1]
+
+1- Subscribe or download manually (Recommended)
+2- Launch the game and wait to see 'Completed'
+3- Restart the game and you can see the mutators in your list
+
+[h1][b][u]Class Names[/u][/b][/h1]
+
+- Mut: MutLoader.MutLoader
+
+[h1][b][u]Manual Download Links (Recommended)[/u][/b][/h1]
+
+You can find it under 'Not-Whitelisted' folder named 'KF-Mutloader-v2.0'
+
+- MEGA Link: https://mega DOT nz/folder/YDoEmKiC#s6FGAtgh40-TvB4bHsLaMQ
+
+- Github: https://github.com/Vel-San/KF-ServerTools/releases/tag/v1.2r
