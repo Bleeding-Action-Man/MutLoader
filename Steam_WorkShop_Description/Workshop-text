@@ -6,6 +6,7 @@ Optimized version of 'MutLoader' originally made by Flame &amp; Essence, slightl
 
 - Better support with MapVoteV2
 - ServerName change with every config
+- If ServerName is given (not empty), Mutator will also check if you have Faked Mutator installed (1, 2, 3, 4, 5, Custom) and will automatically append XF to your server name
 
 [h1][b][u]Notes[/u][/b][/h1]
 
@@ -19,7 +20,6 @@ Optimized version of 'MutLoader' originally made by Flame &amp; Essence, slightl
 
 [code]
 [MutLoaderV2.MutLoader]
-bDebug=True
 
 [Settings1 MutLoaderObject]
 GameTypeName=KFGameType # Can be any gametype you want
@@ -65,8 +65,8 @@ No need to put any other mutators in the list of MapVoteV2. What's important is 
 
 [h1][b][u]Manual Download Links (Recommended)[/u][/b][/h1]
 
-You can find it under 'Whitelisted' folder named 'KF-Mutloader-v2.0'
+You can find it under 'Whitelisted' folder named 'KF-Mutloader-v2.1'
 
 - MEGA Link: https://mega DOT nz/folder/YDoEmKiC#s6FGAtgh40-TvB4bHsLaMQ
 
-- Github: https://github.com/Vel-San/KF-Mutloader/releases/tag/v2.0
+- Github: https://github.com/Vel-San/KF-Mutloader/releases/tag/v2.1

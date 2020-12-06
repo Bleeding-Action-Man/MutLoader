@@ -15,3 +15,4 @@ No need to put any other mutators in the list of MapVoteV2. What's important is 
 
 - Better support with MapVoteV2
 - ServerName change with every config
+- If ServerName is given (not empty), Mutator will also check if you have Faked Mutator installed (1, 2, 3, 4, 5, Custom) and will automatically append XF to your server name
