@@ -1,12 +1,12 @@
-Optimized version of 'MutLoader' originally made by Flame &amp; Essence, slightly modified by Vel-San;
+Optimized version of 'MutLoader' originally made by Flame, Essence & Modified by Vel-San;
 
 - If your server is crashing because your 'Server Launch Command' has a lot of mutators, or MapVoteV2 is crashing as well, then this mutator is for you
 
 [b]Changes from the original version[/b]
 
 - Better support with MapVoteV2
-- ServerName change with every config
-- If ServerName is given (not empty), Mutator will also check if you have Faked Mutator installed (1, 2, 3, 4, 5, Custom) and will automatically append XF to your server name
+- ServerName change with every config (Optional)
+- Detects FakedPlus mutator and adds prefix to ServerName (Optional)
 
 [h1][b][u]Notes[/u][/b][/h1]
 
@@ -22,17 +22,21 @@ Optimized version of 'MutLoader' originally made by Flame &amp; Essence, slightl
 [MutLoaderV2.MutLoader]
 
 [Settings1 MutLoaderObject]
-GameTypeName=KFGameType # Can be any gametype you want
-GameDifficulty=4.0 # Important if you want to make 2 configs of the same GameType, with different difficulties
-ServerName=This is a test server - Diff 4.0 # ServerName will change to this, set to empty if you want to disable
+sGameTypeName=KFGameType # Can be any gametype you want
+fGameDifficulty=4.0 # Important if you want to make 2 configs of the same GameType, with different difficulties
+bAppendFaked=false # Adds 1F, 2F, 3F etc... if true & FakedPlus mutator is enabled
+bUpdateServerName=true # If true, updates server name to sServerName below
+sServerName=This is a test server - Diff 4.0 # ServerName will change to this if bUpdateServerName is true
 Mutator=Mut1.Mut1
 Mutator=Mut1.Mut2
 Mutator=Mut1.Mut3
 
 [Settings2 MutLoaderObject]
-GameTypeName=KFGameType
-GameDifficulty=7.0
-ServerName=This is a test server - Diff 7.0
+sGameTypeName=KFGameType
+fGameDifficulty=7.0
+bAppendFaked=false # Adds 1F, 2F, 3F etc... if true & FakedPlus mutator is enabled
+bUpdateServerName=true # If true, updates server name to sServerName below
+sServerName=This is a test server - Diff 7.0
 Mutator=Mut1.Mut1
 Mutator=Mut1.Mut2
 Mutator=Mut1.Mut3
@@ -65,8 +69,4 @@ No need to put any other mutators in the list of MapVoteV2. What's important is 
 
 [h1][b][u]Manual Download Links (Recommended)[/u][/b][/h1]
 
-You can find it under 'Whitelisted' folder named 'KF-Mutloader-v2.1'
-
-- MEGA Link: https://mega DOT nz/folder/YDoEmKiC#s6FGAtgh40-TvB4bHsLaMQ
-
-- Github: https://github.com/Vel-San/KF-Mutloader/releases/tag/v2.1
+- Github: https://github.com/Vel-San/KF-Mutloader/releases/tag/v2.2

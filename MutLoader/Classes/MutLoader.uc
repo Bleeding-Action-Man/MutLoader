@@ -7,9 +7,9 @@
 
 class MutLoader extends Mutator Config(MutLoaderV2);
 
-// Normal Vars
+// Local Vars
 var string sServerName;
-var bool bKeepServerNameDefault;
+var bool AppendFaked, UpdateServerName;
 var KFGameType KF;
 
 function PreBeginPlay()
@@ -20,24 +20,25 @@ function PreBeginPlay()
   local array<string> Names;
   local int i;
 
-  //////////////////// Essence & Vel-San ///////////
   Names=Class'MutLoaderObject'.Static.GetPerObjectNames("MutLoaderV2");
   for(i=0; i<Names.Length; i++) MutLoaderRecords[i]=New(None, Names[i]) Class'MutLoaderObject';
   for(i=0; i<MutLoaderRecords.Length; i++)
   {
-    if	(
-        MutLoaderRecords[i].GameTypeName==string(Level.Game.Class.Name)
-        && MutLoaderRecords[i].GameDifficulty==Level.Game.GameDifficulty
-      )
+    if( MutLoaderRecords[i].sGameTypeName==string(Level.Game.Class.Name)
+     && MutLoaderRecords[i].fGameDifficulty==Level.Game.GameDifficulty)
     {
-      MutLog("-----|| Using MutLoader Config # [" $i$ "]; Total Configs Found: " $MutLoaderRecords.Length$ " ||-----");
       MutatorList=MutLoaderRecords[i].Mutator;
-      if (MutLoaderRecords[i].ServerName != "") sServerName = MutLoaderRecords[i].ServerName;
-      else bKeepServerNameDefault = True;
+      MutLog("-----|| Adding [" $MutatorList.Length$ "] Mutators found in MutLoader Config # [" $i$ "]; Total Configs Found: " $MutLoaderRecords.Length$ " ||-----");
+      if (MutLoaderRecords[i].bUpdateServerName)
+      {
+        sServerName = MutLoaderRecords[i].sServerName;
+        UpdateServerName = true;
+      }
+      if (MutLoaderRecords[i].bAppendFaked) AppendFaked = true;
       Break;
     }
   }
-  //////////////////////////////////////////////////
+
   for(i=0; i<MutatorList.Length; i++)
   {
     if	(
@@ -57,32 +58,30 @@ function PreBeginPlay()
 
 function PostBeginPlay()
 {
-  SetTimer(1, False);
+  SetTimer(1, false);
 }
 
 function Timer()
 {
   KF = KFGameType(Level.Game);
   TimeStampLog("-----|| Default ServerName: " $Level.GRI.ServerName$ " ||-----");
-  TimeStampLog("-----|| 'MutLoader' ServerName: " $sServerName$ " ||-----");
 
-  CheckMutators(sServerName);
+  // Check for FakedPlus
+  if (AppendFaked) CheckMutators(sServerName);
 
-  if(!bKeepServerNameDefault)
+  // Update Server Name
+  if(UpdateServerName)
   {
+    TimeStampLog("-----|| New ServerName: " $sServerName$ " ||-----");
     Level.GRI.ServerName = sServerName;
-    TimeStampLog("-----|| New ServerName: " $Level.GRI.ServerName$ " ||-----");
   }
   else TimeStampLog("-----|| Keeping Default Server Name ||-----");
 }
 
-// Special Function to detect Faked Mutator and append XF to ServerName
+// Detect FakedPlus Mutator and append 'xF' to ServerName
 function CheckMutators(out string ServerName)
 {
   local Mutator M;
-
-  // Do not append anything or change the ServerName, if empty ServerName detected in Config
-  if(bKeepServerNameDefault) return;
 
   for ( M = KF.BaseMutator; M != None; M = M.NextMutator ) {
     if(M.IsA('Faked_1')) ServerName $= " | 1F";
@@ -107,6 +106,6 @@ function MutLog(string s)
 defaultproperties
 {
   GroupName="KF-MutLoaderV2"
-  FriendlyName="MutLoader - v2.1"
-  Description="seamlessly load mutators With optimized config (Difficulty, ServerName, Several GameTypes); By Flame, Essence & Vel-San"
+  FriendlyName="MutLoader - v2.2"
+  Description="Seamlessly load mutators based on Game Difficulty & Game Type; By Flame, Essence & Vel-San"
 }
